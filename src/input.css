@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-image: linear-gradient(
+    to top,
+    #d6d3d1,
+    #cbb0af,
+    #b78fa4,
+    #8677a7,
+    #0369a1
+  );
+}
+
+.custom-font {
+  font-family: "Delicious Handrawn";
+}
