@@ -1,5 +1,16 @@
 import { compareAsc, parseISO } from 'date-fns';
 
+// options name,date,project,priority
+let currentSort = 'name';
+
+function getCurrentSort() {
+  return currentSort;
+}
+
+function setCurrentSort(newCurrentSort) {
+  currentSort = newCurrentSort;
+}
+
 function sortByName(array) {
   return array.sort((a, b) => {
     const titleA = a.title.toUpperCase();
@@ -39,5 +50,10 @@ function sortByPriority(array) {
 }
 
 export {
-  sortByName, sortByDueDate, sortByPriority, sortByProject,
+  sortByName,
+  sortByDueDate,
+  sortByPriority,
+  sortByProject,
+  getCurrentSort,
+  setCurrentSort,
 };

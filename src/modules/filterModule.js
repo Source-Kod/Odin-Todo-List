@@ -1,5 +1,16 @@
 import { isSameDay, isSameWeek, parseISO } from 'date-fns';
 
+// options are none, day, week
+let currentFilter = 'none';
+
+function getCurrentFilter() {
+  return currentFilter;
+}
+
+function setCurrentFilter(newCurrentFilter) {
+  currentFilter = newCurrentFilter;
+}
+
 function filterArrayByDay(array, date) {
   return array.filter((ele) => isSameDay(parseISO(ele.duedate), parseISO(date)));
 }
@@ -12,4 +23,10 @@ function filterArrayByProjectName(array, projectName) {
   return array.filter((ele) => ele.project === projectName);
 }
 
-export { filterArrayByDay, filterArrayByWeek, filterArrayByProjectName };
+export {
+  filterArrayByDay,
+  filterArrayByWeek,
+  filterArrayByProjectName,
+  getCurrentFilter,
+  setCurrentFilter,
+};
