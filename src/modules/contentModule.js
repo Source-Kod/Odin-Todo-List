@@ -15,14 +15,16 @@ import {
   sortByProject,
 } from './sortingModule';
 
-const contentContainer = document.getElementById('#content-container');
-
 function createTaskList() {
+  let currentTaskList = getTaskList();
+
   // project
-  let currentTaskList = filterArrayByProjectName(
-    getTaskList,
-    getCurrentProject,
-  );
+  if (getCurrentProject !== 'default') {
+    currentTaskList = filterArrayByProjectName(
+      getTaskList(),
+      getCurrentProject(),
+    );
+  }
 
   // filter
   if (getCurrentFilter === 'day') {
@@ -45,3 +47,21 @@ function createTaskList() {
 
   return currentTaskList;
 }
+
+function drawTaskList() {
+  const contentContainer = document.querySelector('#content-container');
+
+  createTaskList().forEach((ele) => {
+    const task = document.createElement('div');
+    // name
+    const taskName = document.createElement('p');
+    taskName.textContent = ele.title;
+
+    task.appendChild(taskName);
+    task.classList = 'flex gap-3';
+
+    contentContainer.appendChild(task);
+  });
+}
+
+export { drawTaskList };

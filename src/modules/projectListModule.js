@@ -1,4 +1,4 @@
-const projectList = ['default', 'projectA'];
+const projectList = ['projectA'];
 
 let currentProject = 'default';
 
