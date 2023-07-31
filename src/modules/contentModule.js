@@ -60,6 +60,30 @@ function drawTaskList() {
     task.appendChild(taskName);
     task.classList = 'flex gap-3';
 
+    // description
+    const taskDescription = document.createElement('p');
+    taskDescription.textContent = ele.description;
+
+    task.appendChild(taskDescription);
+
+    // duedate
+    const taskDueDate = document.createElement('p');
+    taskDueDate.textContent = ele.duedate;
+
+    task.appendChild(taskDueDate);
+
+    // priority
+    const taskPriority = document.createElement('p');
+    taskPriority.textContent = ele.priority;
+
+    task.appendChild(taskPriority);
+
+    // project
+    const taskProject = document.createElement('p');
+    taskProject.textContent = ele.project;
+
+    task.appendChild(taskProject);
+
     contentContainer.appendChild(task);
   });
 }
