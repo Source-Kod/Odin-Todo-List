@@ -1,7 +1,7 @@
 {
   "scripts": {
     "tw": "npx tailwindcss -i ./src/input.css -o ./dist/style.css --watch",
-    "dev": "npx webpack serve --mode development --entry ./src/index.js --static ./dist",
+    "dev": "npx webpack serve --mode development --entry ./src/index.js --static ./dist --hot false",
     "build": "npx webpack"
   },
   "devDependencies": {

@@ -50,25 +50,25 @@ function createTaskList() {
 
 function drawTaskList() {
   const contentContainer = document.querySelector('#content-container');
+  const taskContainer = document.createElement('div');
 
   createTaskList().forEach((ele) => {
     const task = document.createElement('div');
+    task.classList = 'flex gap-3 border-stone-300 border-2 rounded p-2 items-center hover:border-sky-700';
+    const taskExtend = document.createElement('div');
+    taskExtend.classList = 'flex gap-2 ml-4';
+
     // name
     const taskName = document.createElement('p');
     taskName.textContent = ele.title;
+    taskName.classList = 'w-28';
 
     task.appendChild(taskName);
-    task.classList = 'flex gap-3';
-
-    // description
-    const taskDescription = document.createElement('p');
-    taskDescription.textContent = ele.description;
-
-    task.appendChild(taskDescription);
 
     // duedate
     const taskDueDate = document.createElement('p');
     taskDueDate.textContent = ele.duedate;
+    taskDueDate.classList = 'w-28';
 
     task.appendChild(taskDueDate);
 
@@ -84,8 +84,34 @@ function drawTaskList() {
 
     task.appendChild(taskProject);
 
-    contentContainer.appendChild(task);
+    // click to expand
+    const clickToExpand = document.createElement('p');
+    clickToExpand.textContent = 'Click for Description';
+    clickToExpand.classList = 'ml-20 hover:text-sky-700';
+
+    clickToExpand.addEventListener(
+      'click',
+      () => {
+        const taskDescription = document.createElement('p');
+        const descriptionLabel = document.createElement('p');
+
+        descriptionLabel.textContent = 'Description:';
+        taskDescription.textContent = ele.description;
+        taskDescription.classList = '';
+
+        taskExtend.appendChild(descriptionLabel);
+        taskExtend.appendChild(taskDescription);
+      },
+      { once: true },
+    );
+
+    task.appendChild(clickToExpand);
+
+    // attach task to taskcontainer
+    taskContainer.appendChild(task);
+    taskContainer.appendChild(taskExtend);
   });
+  contentContainer.appendChild(taskContainer);
 }
 
 export { drawTaskList };
