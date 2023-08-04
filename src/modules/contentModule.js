@@ -6,7 +6,7 @@ import {
   getCurrentFilter,
 } from './filterModule';
 import { getCurrentProject } from './projectListModule';
-import { getTaskList } from './taskListArrayModule';
+import { changeTaskCompleted, getTaskList } from './taskListArrayModule';
 import {
   getCurrentSort,
   sortByDueDate,
@@ -85,7 +85,7 @@ function drawTaskList() {
   const contentContainer = document.querySelector('#content-container');
   const taskContainer = document.createElement('div');
 
-  createTaskList().forEach((ele) => {
+  createTaskList().forEach((ele, index) => {
     const task = document.createElement('div');
     task.classList = 'flex gap-3 border-stone-300 border-2 rounded p-2 items-center hover:border-sky-700';
     const taskExtend = document.createElement('div');
@@ -97,6 +97,10 @@ function drawTaskList() {
     checkbox.checked = ele.completed;
     checkbox.classList = 'w-4';
     task.appendChild(checkbox);
+
+    checkbox.addEventListener('change', () => {
+      changeTaskCompleted(index);
+    });
 
     // name
     const taskName = document.createElement('p');
