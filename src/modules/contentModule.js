@@ -87,7 +87,14 @@ function drawTaskList() {
     const task = document.createElement('div');
     task.classList = 'flex gap-3 border-stone-300 border-2 rounded p-2 items-center hover:border-sky-700';
     const taskExtend = document.createElement('div');
+
     taskExtend.classList = 'flex gap-2 ml-4';
+    // completed checkbox
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = ele.completed;
+    checkbox.classList = 'w-4';
+    task.appendChild(checkbox);
 
     // name
     const taskName = document.createElement('p');
