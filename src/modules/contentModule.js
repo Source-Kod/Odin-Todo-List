@@ -63,11 +63,13 @@ function createSortBar() {
   const sortBarDate = document.createElement('p');
   sortBarDate.textContent = 'Due Date';
   sortBarContainer.appendChild(sortBarDate);
+  sortBarDate.classList = 'w-28';
 
   // priority
   const sortBarPriority = document.createElement('p');
   sortBarPriority.textContent = 'Priority';
   sortBarContainer.appendChild(sortBarPriority);
+  sortBarPriority.classList = 'w-28';
 
   // project
   const sortBarProject = document.createElement('p');
@@ -112,9 +114,15 @@ function drawTaskList() {
 
     // priority
     const taskPriority = document.createElement('p');
-    taskPriority.textContent = ele.priority;
+    const taskPriorityParentContainer = document.createElement('div');
+    taskPriorityParentContainer.classList = 'w-28';
 
-    task.appendChild(taskPriority);
+    if (ele.priority === 3) taskPriority.classList = 'ml-4 w-3 h-3 bg-red-700 rounded-full';
+    if (ele.priority === 2) taskPriority.classList = 'ml-4 w-3 h-3 bg-yellow-500 rounded-full';
+    if (ele.priority === 1) taskPriority.classList = 'ml-4 w-3 h-3 bg-blue-700 rounded-full';
+
+    taskPriorityParentContainer.appendChild(taskPriority);
+    task.appendChild(taskPriorityParentContainer);
 
     // project
     const taskProject = document.createElement('p');
