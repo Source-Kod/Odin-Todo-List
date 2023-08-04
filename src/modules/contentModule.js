@@ -10,10 +10,17 @@ import { changeTaskCompleted, getTaskList } from './taskListArrayModule';
 import {
   getCurrentSort,
   sortByDueDate,
-  sortByName,
+  sortByTitle,
   sortByPriority,
   sortByProject,
 } from './sortingModule';
+
+function clearContentContainer() {
+  const contentContainer = document.querySelector('#content-container');
+  while (contentContainer.firstChild) {
+    contentContainer.removeChild(contentContainer.firstChild);
+  }
+}
 
 function createTaskList() {
   let currentTaskList = getTaskList();
@@ -40,7 +47,7 @@ function createTaskList() {
     );
   }
   // sort
-  if (getCurrentSort === 'name') currentTaskList = sortByName(currentTaskList);
+  if (getCurrentSort === 'title') currentTaskList = sortByTitle(currentTaskList);
   if (getCurrentSort === 'date') currentTaskList = sortByDueDate(currentTaskList);
   if (getCurrentSort === 'project') currentTaskList = sortByProject(currentTaskList);
   if (getCurrentSort === 'priority') currentTaskList = sortByPriority(currentTaskList);
