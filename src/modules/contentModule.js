@@ -48,7 +48,38 @@ function createTaskList() {
   return currentTaskList;
 }
 
+function createSortBar() {
+  const contentContainer = document.querySelector('#content-container');
+  const sortBarContainer = document.createElement('div');
+  sortBarContainer.classList = 'flex gap-3 p-2 ml-7';
+
+  // title
+  const sortbarTitle = document.createElement('p');
+  sortbarTitle.textContent = 'Task Title';
+  sortBarContainer.appendChild(sortbarTitle);
+  sortbarTitle.classList = 'w-28';
+
+  // DueDate
+  const sortBarDate = document.createElement('p');
+  sortBarDate.textContent = 'Due Date';
+  sortBarContainer.appendChild(sortBarDate);
+
+  // priority
+  const sortBarPriority = document.createElement('p');
+  sortBarPriority.textContent = 'Priority';
+  sortBarContainer.appendChild(sortBarPriority);
+
+  // project
+  const sortBarProject = document.createElement('p');
+  sortBarProject.textContent = 'Project';
+  sortBarContainer.appendChild(sortBarProject);
+
+  contentContainer.appendChild(sortBarContainer);
+}
+
 function drawTaskList() {
+  createSortBar();
+
   const contentContainer = document.querySelector('#content-container');
   const taskContainer = document.createElement('div');
 
