@@ -108,6 +108,12 @@ function createSortBar() {
     drawTaskList();
   });
 
+  // underline which sort is currentsort
+  if (getCurrentSort() === 'title') sortbarTitle.classList.add('underline');
+  if (getCurrentSort() === 'date') sortBarDate.classList.add('underline');
+  if (getCurrentSort() === 'priority') sortBarPriority.classList.add('underline');
+  if (getCurrentSort() === 'project') sortBarProject.classList.add('underline');
+
   // add sortbar to the content container
   contentContainer.appendChild(sortBarContainer);
 }
