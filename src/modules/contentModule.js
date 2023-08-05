@@ -13,6 +13,7 @@ import {
   sortByTitle,
   sortByPriority,
   sortByProject,
+  setCurrentSort,
 } from './sortingModule';
 
 function clearContentContainer() {
@@ -26,7 +27,7 @@ function createTaskList() {
   let currentTaskList = getTaskList();
 
   // project
-  if (getCurrentProject !== 'default') {
+  if (getCurrentProject() !== 'default') {
     currentTaskList = filterArrayByProjectName(
       getTaskList(),
       getCurrentProject(),
@@ -34,23 +35,23 @@ function createTaskList() {
   }
 
   // filter
-  if (getCurrentFilter === 'day') {
+  if (getCurrentFilter() === 'day') {
     currentTaskList = filterArrayByDay(
       currentTaskList,
       format(new Date(), 'yyyy-MM-dd'),
     );
   }
-  if (getCurrentFilter === 'week') {
+  if (getCurrentFilter() === 'week') {
     currentTaskList = filterArrayByWeek(
       currentTaskList,
       format(new Date(), 'yyyy-MM-dd'),
     );
   }
   // sort
-  if (getCurrentSort === 'title') currentTaskList = sortByTitle(currentTaskList);
-  if (getCurrentSort === 'date') currentTaskList = sortByDueDate(currentTaskList);
-  if (getCurrentSort === 'project') currentTaskList = sortByProject(currentTaskList);
-  if (getCurrentSort === 'priority') currentTaskList = sortByPriority(currentTaskList);
+  if (getCurrentSort() === 'title') currentTaskList = sortByTitle(currentTaskList);
+  if (getCurrentSort() === 'date') currentTaskList = sortByDueDate(currentTaskList);
+  if (getCurrentSort() === 'project') currentTaskList = sortByProject(currentTaskList);
+  if (getCurrentSort() === 'priority') currentTaskList = sortByPriority(currentTaskList);
 
   return currentTaskList;
 }
@@ -66,11 +67,23 @@ function createSortBar() {
   sortBarContainer.appendChild(sortbarTitle);
   sortbarTitle.classList = 'w-28';
 
+  sortbarTitle.addEventListener('click', () => {
+    setCurrentSort('title');
+    clearContentContainer();
+    drawTaskList();
+  });
+
   // DueDate
   const sortBarDate = document.createElement('p');
   sortBarDate.textContent = 'Due Date';
   sortBarContainer.appendChild(sortBarDate);
   sortBarDate.classList = 'w-28';
+
+  sortBarDate.addEventListener('click', () => {
+    setCurrentSort('date');
+    clearContentContainer();
+    drawTaskList();
+  });
 
   // priority
   const sortBarPriority = document.createElement('p');
@@ -78,11 +91,24 @@ function createSortBar() {
   sortBarContainer.appendChild(sortBarPriority);
   sortBarPriority.classList = 'w-28';
 
+  sortBarPriority.addEventListener('click', () => {
+    setCurrentSort('priority');
+    clearContentContainer();
+    drawTaskList();
+  });
+
   // project
   const sortBarProject = document.createElement('p');
   sortBarProject.textContent = 'Project';
   sortBarContainer.appendChild(sortBarProject);
 
+  sortBarProject.addEventListener('click', () => {
+    setCurrentSort('project');
+    clearContentContainer();
+    drawTaskList();
+  });
+
+  // add sortbar to the content container
   contentContainer.appendChild(sortBarContainer);
 }
 
