@@ -69,7 +69,6 @@ function createSortBar() {
 
   sortbarTitle.addEventListener('click', () => {
     setCurrentSort('title');
-    clearContentContainer();
     drawTaskList();
   });
 
@@ -81,7 +80,6 @@ function createSortBar() {
 
   sortBarDate.addEventListener('click', () => {
     setCurrentSort('date');
-    clearContentContainer();
     drawTaskList();
   });
 
@@ -93,7 +91,6 @@ function createSortBar() {
 
   sortBarPriority.addEventListener('click', () => {
     setCurrentSort('priority');
-    clearContentContainer();
     drawTaskList();
   });
 
@@ -104,7 +101,6 @@ function createSortBar() {
 
   sortBarProject.addEventListener('click', () => {
     setCurrentSort('project');
-    clearContentContainer();
     drawTaskList();
   });
 
@@ -119,6 +115,7 @@ function createSortBar() {
 }
 
 function drawTaskList() {
+  clearContentContainer();
   createSortBar();
 
   const contentContainer = document.querySelector('#content-container');
