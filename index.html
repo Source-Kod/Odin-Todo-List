@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
   </head>
-  <body class="flex flex-col">
+  <body class="flex flex-col gradient-bg">
     <!-- header -->
     <div class="bg-sky-700 p-3 shadow-sky-700 shadow-lg">
       <h1 class="text-4xl font-bold text-white custom-font">TODO LIST</h1>
@@ -37,10 +37,19 @@
           <ul id="project-list-container"></ul>
         </div>
         <div id="form-buttons-container" class="flex gap-4 mt-3">
-          <button class="border-white border-2 rounded-lg" type="button">
+          <button
+            class="border-white border-2 rounded-lg"
+            id="new-task-button"
+            type="button"
+          >
             Add New Task
           </button>
-          <button class="border-white border-2 rounded-lg" type="button">
+
+          <button
+            class="border-white border-2 rounded-lg"
+            id="new-project-button"
+            type="button"
+          >
             Add New Project
           </button>
         </div>
