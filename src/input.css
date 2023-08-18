@@ -16,3 +16,8 @@
 .custom-font {
   font-family: "Delicious Handrawn";
 }
+
+/* Style the modal overlay when open */
+dialog[open]::backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
+}
