@@ -31,6 +31,7 @@ function clearProjectList() {
 }
 
 function drawProjectList() {
+  clearProjectList();
   const projectListContainer = document.querySelector(
     '#project-list-container',
   );

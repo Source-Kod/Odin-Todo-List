@@ -1,5 +1,9 @@
 import { drawTaskList } from './contentModule';
-import { getProjectList } from './projectListModule';
+import {
+  addToProjectList,
+  drawProjectList,
+  getProjectList,
+} from './projectListModule';
 import { addToTaskList, createNewTask } from './taskListArrayModule';
 
 const modalContainer = document.querySelector('#modal-container');
@@ -13,7 +17,6 @@ function clearModalContainer() {
 function createNewTaskModal() {
   const modalDialog = document.createElement('dialog');
   const modalForm = document.createElement('form');
-  //
   // title
   const titleLabel = document.createElement('label');
   const titleTextArea = document.createElement('input');
@@ -143,7 +146,7 @@ function createNewTaskModal() {
     drawTaskList();
   });
 
-  // append modal to body and set dialog to show
+  // append modal to modal-container and set dialog to show
   modalDialog.appendChild(modalForm);
   modalContainer.appendChild(modalDialog);
   modalDialog.showModal();
@@ -151,7 +154,56 @@ function createNewTaskModal() {
   modalForm.classList = 'flex flex-col gap-2';
 }
 
-function createNewProjectModal() {}
+function createNewProjectModal() {
+  // createNewTaskModal();
+  const modalDialog = document.createElement('dialog');
+  const modalForm = document.createElement('form');
+
+  // Project name
+  const projectNameLabel = document.createElement('label');
+  const projectNameTextArea = document.createElement('input');
+  projectNameTextArea.required = true;
+  projectNameLabel.textContent = 'Project name: ';
+  modalForm.appendChild(projectNameLabel);
+  modalForm.appendChild(projectNameTextArea);
+
+  // concel and submit buttons
+  const buttonContainer = document.createElement('div');
+  buttonContainer.classList = 'flex gap-4';
+  const cancelButton = document.createElement('button');
+  const submitButton = document.createElement('button');
+  cancelButton.classList = 'w-28 border-black border-2 rounded-full hover:bg-sky-700';
+  submitButton.classList = 'w-28 border-black border-2 rounded-full hover:bg-sky-700';
+  cancelButton.textContent = 'Cancel';
+  submitButton.textContent = 'submit';
+  submitButton.type = 'submit';
+
+  buttonContainer.appendChild(cancelButton);
+  buttonContainer.appendChild(submitButton);
+  modalForm.appendChild(buttonContainer);
+
+  cancelButton.addEventListener('click', () => {
+    clearModalContainer();
+    modalDialog.close();
+  });
+
+  modalForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    addToProjectList(projectNameTextArea.value);
+
+    clearModalContainer();
+    modalDialog.close();
+    drawProjectList();
+  });
+
+  // append modal to modal-container and set dialog to show
+  modalDialog.appendChild(modalForm);
+  modalContainer.appendChild(modalDialog);
+  modalDialog.showModal();
+  modalDialog.classList = 'gradient-bg p-4 rounded-lg';
+  modalForm.classList = 'flex flex-col gap-2';
+}
 
 function addEventsToFormButtons() {
   const newTaskButton = document.querySelector('#new-task-button');
@@ -160,7 +212,10 @@ function addEventsToFormButtons() {
   newTaskButton.addEventListener('click', () => {
     createNewTaskModal();
   });
-  // createNewTaskModal();
+
+  newProjectButton.addEventListener('click', () => {
+    createNewProjectModal();
+  });
 }
 
 export { addEventsToFormButtons };
