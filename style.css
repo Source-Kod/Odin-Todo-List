@@ -534,16 +534,16 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.ml-20 {
-  margin-left: 5rem;
-}
-
 .ml-4 {
   margin-left: 1rem;
 }
 
 .ml-7 {
   margin-left: 1.75rem;
+}
+
+.ml-auto {
+  margin-left: auto;
 }
 
 .mt-10 {
