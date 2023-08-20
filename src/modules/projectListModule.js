@@ -1,6 +1,6 @@
 import { drawTaskList } from './contentModule';
 
-const projectList = ['default', 'projectA'];
+const projectList = ['demoProjectOne', 'demoProjectTwo'];
 
 let currentProject = 'default';
 
@@ -37,7 +37,8 @@ function drawProjectList() {
   );
 
   projectList.forEach((ele) => {
-    const project = document.createElement('p');
+    const project = document.createElement('button');
+    project.classList = 'hover:text-sky-700';
     project.textContent = ele;
     projectListContainer.appendChild(project);
 
@@ -49,6 +50,19 @@ function drawProjectList() {
       drawProjectList();
       drawTaskList();
     });
+  });
+
+  // add event for the all projects button
+  const allProjectsButton = document.querySelector('#all-projects-button');
+
+  if (currentProject === 'default') allProjectsButton.classList.add('underline');
+  if (currentProject !== 'default') allProjectsButton.classList.remove('underline');
+
+  allProjectsButton.addEventListener('click', () => {
+    setCurrentProject('default');
+    clearProjectList();
+    drawProjectList();
+    drawTaskList();
   });
 }
 

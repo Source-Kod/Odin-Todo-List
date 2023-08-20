@@ -172,8 +172,8 @@ function drawTaskList() {
 
     // click to expand
     const clickToExpand = document.createElement('p');
-    clickToExpand.textContent = 'Click for Description';
-    clickToExpand.classList = 'ml-20 hover:text-sky-700';
+    clickToExpand.textContent = '🛈';
+    clickToExpand.classList = 'ml-auto hover:text-sky-700';
 
     clickToExpand.addEventListener(
       'click',

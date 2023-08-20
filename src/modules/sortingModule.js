@@ -1,7 +1,7 @@
 import { compareAsc, parseISO } from 'date-fns';
 
-// options name,date,project,priority
-let currentSort = 'date';
+// options title,date,project,priority
+let currentSort = 'title';
 
 function getCurrentSort() {
   return currentSort;

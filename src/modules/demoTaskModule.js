@@ -2,49 +2,56 @@ import { addToTaskList, createNewTask } from './taskListArrayModule';
 
 export default function addDemoTask() {
   addToTaskList(
-    createNewTask('read', 'read a book', '2023-05-24', 3, 'default', true),
-  );
-
-  addToTaskList(
     createNewTask(
-      'groceries',
-      'buy fruits and vegetables',
-      '2023-05-23',
-      1,
-      'default',
+      'Read',
+      'read a book',
+      '2023-07-24',
+      3,
+      'demoProjectOne',
       true,
     ),
   );
 
   addToTaskList(
     createNewTask(
-      'cleaning',
+      'Groceries',
+      'buy fruits and vegetables',
+      '2023-08-23',
+      1,
+      'demoProjectOne',
+      true,
+    ),
+  );
+
+  addToTaskList(
+    createNewTask(
+      'Cleaning',
       'vacuum the living room',
-      '2023-04-30',
+      '2023-08-30',
       3,
-      'default',
+      'demoProjectOne',
       false,
     ),
   );
 
   addToTaskList(
     createNewTask(
-      'meeting',
+      'Meeting',
       'attend project status meeting',
-      '2023-05-28',
+      '2023-08-28',
       2,
-      'default',
+      'demoProjectTwo',
       false,
     ),
   );
 
   addToTaskList(
     createNewTask(
-      'appointment',
+      'Appointment',
       'visit the dentist',
-      '2023-05-28',
+      '2023-08-28',
       3,
-      'projectA',
+      'demoProjectTwo',
       true,
     ),
   );
