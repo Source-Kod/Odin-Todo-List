@@ -65,7 +65,7 @@ function createSortBar() {
   const sortbarTitle = document.createElement('p');
   sortbarTitle.textContent = 'Task Title';
   sortBarContainer.appendChild(sortbarTitle);
-  sortbarTitle.classList = 'w-28';
+  sortbarTitle.classList = 'w-28 hover:text-sky-700';
 
   sortbarTitle.addEventListener('click', () => {
     setCurrentSort('title');
@@ -76,7 +76,7 @@ function createSortBar() {
   const sortBarDate = document.createElement('p');
   sortBarDate.textContent = 'Due Date';
   sortBarContainer.appendChild(sortBarDate);
-  sortBarDate.classList = 'w-28';
+  sortBarDate.classList = 'w-28 hover:text-sky-700';
 
   sortBarDate.addEventListener('click', () => {
     setCurrentSort('date');
@@ -87,7 +87,7 @@ function createSortBar() {
   const sortBarPriority = document.createElement('p');
   sortBarPriority.textContent = 'Priority';
   sortBarContainer.appendChild(sortBarPriority);
-  sortBarPriority.classList = 'w-28';
+  sortBarPriority.classList = 'w-28 hover:text-sky-700';
 
   sortBarPriority.addEventListener('click', () => {
     setCurrentSort('priority');
@@ -98,6 +98,7 @@ function createSortBar() {
   const sortBarProject = document.createElement('p');
   sortBarProject.textContent = 'Project';
   sortBarContainer.appendChild(sortBarProject);
+  sortBarProject.classList = 'w-28 hover:text-sky-700';
 
   sortBarProject.addEventListener('click', () => {
     setCurrentSort('project');
@@ -120,13 +121,14 @@ function drawTaskList() {
 
   const contentContainer = document.querySelector('#content-container');
   const taskContainer = document.createElement('div');
+  taskContainer.classList = 'flex flex-col gap-2';
 
   createTaskList().forEach((ele, index) => {
     const task = document.createElement('div');
     task.classList = 'flex gap-3 border-stone-300 border-2 rounded p-2 items-center hover:border-sky-700';
     const taskExtend = document.createElement('div');
-
     taskExtend.classList = 'flex gap-2 ml-4';
+
     // completed checkbox
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
@@ -155,7 +157,7 @@ function drawTaskList() {
     // priority
     const taskPriority = document.createElement('p');
     const taskPriorityParentContainer = document.createElement('div');
-    taskPriorityParentContainer.classList = 'w-28';
+    taskPriorityParentContainer.classList = 'w-20';
 
     if (ele.priority === 3) taskPriority.classList = 'ml-4 w-3 h-3 bg-red-700 rounded-full';
     if (ele.priority === 2) taskPriority.classList = 'ml-4 w-3 h-3 bg-yellow-500 rounded-full';
@@ -175,7 +177,7 @@ function drawTaskList() {
     clickToExpand.textContent = '🛈';
     clickToExpand.classList = 'ml-auto hover:text-sky-700';
 
-    clickToExpand.addEventListener(
+    task.addEventListener(
       'click',
       () => {
         const taskDescription = document.createElement('p');
