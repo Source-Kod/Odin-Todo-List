@@ -3,6 +3,8 @@ import { drawTaskList } from './contentModule';
 const projectList = ['demoProjectOne', 'demoProjectTwo'];
 
 let currentProject = 'default';
+// check localStorage for a currentProject
+if (localStorage.getItem('currentProject') !== null) currentProject = localStorage.getItem('currentProject');
 
 function getProjectList() {
   return projectList;
@@ -18,6 +20,7 @@ function getCurrentProject() {
 
 function setCurrentProject(newCurrentProject) {
   currentProject = newCurrentProject;
+  localStorage.setItem('currentProject', newCurrentProject);
 }
 
 function clearProjectList() {

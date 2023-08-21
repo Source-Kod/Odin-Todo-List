@@ -2,6 +2,8 @@ import { compareAsc, parseISO } from 'date-fns';
 
 // options title,date,project,priority
 let currentSort = 'title';
+// check localStorage for a currentSort
+if (localStorage.getItem('currentSort') !== null) currentSort = localStorage.getItem('currentSort');
 
 function getCurrentSort() {
   return currentSort;
@@ -9,6 +11,7 @@ function getCurrentSort() {
 
 function setCurrentSort(newCurrentSort) {
   currentSort = newCurrentSort;
+  localStorage.setItem('currentSort', newCurrentSort);
 }
 
 function sortByTitle(array) {

@@ -3,6 +3,10 @@ import { drawTaskList } from './contentModule';
 
 // options are none, day, week
 let currentFilter = 'none';
+
+// check localStorage for a currentFilter
+if (localStorage.getItem('currentFilter') !== null) currentFilter = localStorage.getItem('currentFilter');
+
 const filterListContainer = document.querySelector('#filter-list-container');
 
 function getCurrentFilter() {
@@ -11,6 +15,7 @@ function getCurrentFilter() {
 
 function setCurrentFilter(newCurrentFilter) {
   currentFilter = newCurrentFilter;
+  localStorage.setItem('currentFilter', newCurrentFilter);
 }
 
 function filterArrayByDay(array, date) {
