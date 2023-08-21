@@ -1,7 +1,10 @@
-const taskListArray = [];
+let taskListArray = [];
+// check localStorage for taskListArray
+if (localStorage.getItem('taskListArray') !== null) taskListArray = JSON.parse(localStorage.getItem('taskListArray'));
 
 function addToTaskList(object) {
   taskListArray.push(object);
+  localStorage.setItem('taskListArray', JSON.stringify(taskListArray));
 }
 
 function getTaskList() {
