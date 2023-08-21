@@ -1,6 +1,8 @@
 import { drawTaskList } from './contentModule';
 
-const projectList = ['demoProjectOne', 'demoProjectTwo'];
+let projectList = ['demoProjectOne', 'demoProjectTwo'];
+// check localStorage for a projectList
+if (localStorage.getItem('projectList') !== null) projectList = JSON.parse(localStorage.getItem('projectList'));
 
 let currentProject = 'default';
 // check localStorage for a currentProject
@@ -12,6 +14,7 @@ function getProjectList() {
 
 function addToProjectList(project) {
   projectList.push(project);
+  localStorage.setItem('projectList', JSON.stringify(projectList));
 }
 
 function getCurrentProject() {
